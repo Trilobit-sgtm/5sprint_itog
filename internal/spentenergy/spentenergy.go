@@ -14,8 +14,17 @@ const (
 )
 
 func WalkingSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
-	if steps <= 0 || weight <= 0 || height <= 0 || duration <= 0 {
-		return 0, errors.New("invalid data for walking calorie calculation")
+	if steps <= 0 {
+		return 0, errors.New("steps must be positive")
+	}
+	if weight <= 0 {
+		return 0, errors.New("weight must be positive")
+	}
+	if height <= 0 {
+		return 0, errors.New("height must be positive")
+	}
+	if duration <= 0 {
+		return 0, errors.New("duration must be positive")
 	}
 
 	meanSpeed := MeanSpeed(steps, height, duration)
@@ -28,8 +37,17 @@ func WalkingSpentCalories(steps int, weight, height float64, duration time.Durat
 }
 
 func RunningSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
-	if steps <= 0 || weight <= 0 || height <= 0 || duration <= 0 {
-		return 0, errors.New("invalid data for running calorie calculation")
+	if steps <= 0 {
+		return 0, errors.New("steps must be positive")
+	}
+	if weight <= 0 {
+		return 0, errors.New("weight must be positive")
+	}
+	if height <= 0 {
+		return 0, errors.New("height must be positive")
+	}
+	if duration <= 0 {
+		return 0, errors.New("duration must be positive")
 	}
 
 	meanSpeed := MeanSpeed(steps, height, duration)

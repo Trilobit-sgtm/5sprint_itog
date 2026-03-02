@@ -3,7 +3,6 @@ package actioninfo
 import (
 	"fmt"
 	"log"
-	"strings"
 )
 
 type DataParser interface {
@@ -24,10 +23,6 @@ func Info(dataset []string, dp DataParser) {
 			continue
 		}
 
-		if strings.HasSuffix(info, "\n") {
-			fmt.Print(info)
-		} else {
-			fmt.Println(info)
-		}
+		fmt.Println(info)
 	}
 }

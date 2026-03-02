@@ -24,13 +24,19 @@ func (ds *DaySteps) Parse(datastring string) (err error) {
 	}
 
 	steps, err := strconv.Atoi(parts[0])
-	if err != nil || steps <= 0 {
-		return errors.New("invalid steps value")
+	if err != nil {
+		return fmt.Errorf("invalid steps value: %w", err)
+	}
+	if steps <= 0 {
+		return errors.New("steps value must be positive")
 	}
 
 	duration, err := time.ParseDuration(parts[1])
-	if err != nil || duration <= 0 {
-		return errors.New("invalid walk duration")
+	if err != nil {
+		return fmt.Errorf("invalid walk duration: %w", err)
+	}
+	if duration <= 0 {
+		return errors.New("walk duration must be positive")
 	}
 
 	ds.Steps = steps
